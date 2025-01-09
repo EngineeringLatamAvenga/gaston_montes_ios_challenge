@@ -6,5 +6,5 @@
 //
 
 protocol CityDatasource {
-    func cityDatasourceGetCities(forFilter: String?)
+    func cityDatasourceGetCities(forFilter: String?) async throws -> [CityDatasource]
 }

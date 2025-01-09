@@ -18,5 +18,11 @@ class CityRepository: CityDatasource {
     }
     
     // MARK: - CityDatasource implementation.
-    func cityDatasourceGetCities(forFilter: String?) {}
+    func cityDatasourceGetCities(forFilter: String?) async throws -> [CityDatasource] {
+        if let localCities = try? await self.cityLocalRepository.cityDatasourceGetCities(forFilter: forFilter) {
+            return localCities
+        }
+        
+        return try await self.cityRemoteRepository.cityDatasourceGetCities(forFilter: forFilter)
+    }
 }

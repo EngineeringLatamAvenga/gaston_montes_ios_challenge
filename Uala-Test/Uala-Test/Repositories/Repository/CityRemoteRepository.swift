@@ -7,5 +7,7 @@
 
 class CityRemoteRepository: CityDatasource {
     // MARK: - CityDatasource implementation.
-    func cityDatasourceGetCities(forFilter: String?) {}
+    func cityDatasourceGetCities(forFilter: String?) async throws -> [CityDatasource] {
+        return [CityDatasource]()
+    }
 }
