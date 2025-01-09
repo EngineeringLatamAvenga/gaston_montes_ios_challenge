@@ -10,6 +10,20 @@ import SwiftData
 
 @main
 struct Uala_TestApp: App {
+    // MARK: - Vars.
+    let appCoordinator = CityCoordinator()
+    
+    // MARK: - Storage properties.
+    @AppStorage("isDarkMode") var appIsDarkMode: Bool = false
+
+    // MARK: - Body.
+    var body: some Scene {
+        WindowGroup {
+            self.appCoordinator.coordinatorStart()
+                .preferredColorScheme(self.appIsDarkMode ? .dark : .light)
+        }
+    }
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -22,11 +36,4 @@ struct Uala_TestApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-        .modelContainer(sharedModelContainer)
-    }
 }

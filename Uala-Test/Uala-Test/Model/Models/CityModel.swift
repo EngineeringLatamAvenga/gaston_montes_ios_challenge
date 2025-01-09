@@ -7,14 +7,8 @@
 
 import CoreLocation
 
-protocol CityModel: Identifiable {
+protocol CityModel {
     var cityID: Int { get }
     var cityDisplayName: String { get }
     var cityCoordinates: CLLocation { get }
-}
-
-extension CityModel {
-    var id: Int {
-        return self.cityID
-    }
 }
